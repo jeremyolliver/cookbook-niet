@@ -6,12 +6,6 @@ No other monitoring of sub processes is done. If you need logging, you'll have t
 
 For more information see: https://github.com/willbryant/niet
 
-Planned features:
------------------
-
-Startup scripts. Configure your scripts in a directory, and they'll be run should the server reboot.
-configuring a directory where user scripts can be placed to run arbitrary commands via niet
-
 Requirements
 ============
 
@@ -22,14 +16,43 @@ Attributes
 * niet[:tag]            = "master"
 * niet[:artifact_type]  = "tar.gz"
 * niet[:safe_install]   = true
+* niet[:processes]      = {}
 
 Usage
 =====
+
+Niet
+----
 
 Just include the default recipe, and the niet binary will be compiled and installed to the system available to use
 
   `niet -c /cd/to/here /run/this/binary`
 
+Startup scripts
+---------------
+
+Warning - these /etc/init.d style scripts have only been tested on ubuntu
+
+Usage: set attributes for the user and path to executable file to run, e.g.
+
+chef
+
+    node.set[:niet][:processes] = {
+      "myuser" => "/path/to/myscript.sh"
+    }
+
+executable file "/path/to/myscript.sh"
+
+    #! /bin/bash
+    niet -c /process/start_dir /important/binary/to/run.sh
+
+The niet service wrapper will now launch this executable file as the user "myuser". The restart/start/stop actions will gracefully target the niet processes with the correct control signals
+
+
+TODO
+====
+
+rewrite startup scripts to configure via `/etc/niet.d/` configuration directory
 
 License
 =======
