@@ -48,6 +48,7 @@ def unpack
   when "tar.gz",".tgz"
     execute "cd #{new_resource.download_dir} && mkdir -p #{new_resource.base_name}-#{new_resource.tag} && tar zxf #{@tarball} --directory=#{new_resource.base_name}-#{new_resource.tag} --strip-components=1"
   else
+    # TODO: we could support .zip as well (which github hosts)
     raise Chef::Exceptions::UnsupportedAction, "Current package type #{new_resource.artifact_type} is unsupported"
   end
 end

@@ -34,7 +34,7 @@ when 'redhat','centos','fedora','scientific','suse','amazon'
 end
 
 niet = node['niet']
-location = "#{niet[:install_source]}/#{niet[:tag]}" # ".#{niet[:artifact_type]}" # Github doesn't include the filetype suffix in it's download
+location = "#{niet[:install_source]}/#{niet[:tag]}.#{niet[:artifact_type]}"
 
 niet_install "niet" do
   download_url location

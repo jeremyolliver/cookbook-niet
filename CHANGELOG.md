@@ -4,6 +4,7 @@
 
 * Better platform support for the `niet::service` recipe's init script (specifically fixes for rhel).
 Added LSB init comments detailing run levels. This should ensure the service enable works on platforms that support LSB init (includes rhel family with chkconfig)
+* Bugfix: Github download - github have changed their archive download URL's this should be working again
 
 ## v0.1.1:
 

@@ -6,16 +6,18 @@ No other monitoring of sub processes is done. If you need logging, you'll have t
 
 For more information see: https://github.com/willbryant/niet
 
+Another fork of niet which may be worth using if you plan on running [Resque](https://github.com/resque/resque) under niet is https://github.com/terrcin/niet
+
 Requirements
 ============
 
 Attributes
 ==========
 
-* niet[:install_source] = "https://github.com/willbryant/niet/tarball"
+* niet[:install_source] = "https://github.com/willbryant/niet/archive"
 * niet[:tag]            = "master"
 * niet[:artifact_type]  = "tar.gz"
-* niet[:safe_install]   = true
+* niet[:safe_install]   = true     (will not override an existing install, even if it's a different version)
 * niet[:processes]      = {}
 
 Usage
