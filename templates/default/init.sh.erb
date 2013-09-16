@@ -1,5 +1,14 @@
 #!/bin/sh
 
+### BEGIN INIT INFO
+# Provides: niet
+# Defalt-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Description: Niet global service configuration manager
+### END INIT INFO
+
+# This config file is a template managed via chef - don't edit it
+
 start() {
   <% @processes.each do |user, locations| %>
       <% locations.each do |loc| %>
